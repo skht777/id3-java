@@ -19,7 +19,7 @@ public enum ID3Version {
 		this.version = version; 
 	}
 	
-	public static ID3Version toID3Version(int ver) {
+	public static ID3Version valueOf(int ver) {
 		return Arrays.stream(ID3Version.values())
 				.filter(v -> v.version == ver)
 				.findFirst().orElse(null);
