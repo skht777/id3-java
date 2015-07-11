@@ -16,18 +16,19 @@ public class ID3Frame {
 		private static int frameSize;
 		private static int buffer;
 
-		private String id;
+		private FrameID id;
 		private int size;
 		private byte[] flag;
 
 		ID3FrameHeader(ByteWrapper wrapper) {
-			id = wrapper.read(0, buffer).asString();
+			String idstr = wrapper.read(0, buffer).asString();
+			id = idstr.matches("\\w+") ? FrameID.valueOf(idstr) : null;
 			ByteSupplier bs = wrapper.read(wrapper.current(), buffer);
 			size = version.equals(ID3Version.V24) ? bs.asSyncSafe() : bs.asInt();
 			flag = version.equals(ID3Version.V22) ? new byte[2] : wrapper.read(wrapper.current(), 2).get();
 		}
 
-		public String getId() {
+		public FrameID getId() {
 			return id;
 		}
 
@@ -41,7 +42,7 @@ public class ID3Frame {
 		
 		@Override
 		public String toString() {
-			return getId();
+			return getId().toString();
 		}
 
 	}

@@ -25,7 +25,7 @@ public class ID3Frames extends ArrayList<ID3Frame> {
 	}
 	
 	private boolean addFrame(ID3Frame frame) {
-		if(frame.toString().matches("\\w+")) return add(frame);
+		if(frame.getHeader().getId() != null) return add(frame);
 		return false;
 	}
 
