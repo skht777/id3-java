@@ -58,11 +58,11 @@ public class ByteWrapper {
 		}
 		
 		public String asBynary(int split) {
-			return asObject(b -> ByteUtility.toBynary(b, split));
+			return asObject(b -> ByteUtility.toBinary(b, split));
 		}
 		
 		public String asBynary() {
-			return asObject(ByteUtility::toBynary);
+			return asObject(ByteUtility::toBinary);
 		}
 		
 		public <T> T asObject(Function<byte[], T> func) {

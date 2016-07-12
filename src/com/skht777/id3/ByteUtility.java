@@ -35,18 +35,18 @@ public final class ByteUtility {
 	public static String toString(byte[] b) {
 		return new String(b);
 	}
-	
-	public static String toBynary(byte[] b, int split) {
+
+	public static String toBinary(byte[] b, int split) {
 		return IntStream.range(0, b.length / split)
-				.mapToObj(i -> ByteUtility.split(b, i, split)).map(ByteUtility::toBynary)
+				.mapToObj(i -> ByteUtility.split(b, i * split, split)).map(ByteUtility::toBinary)
 				.collect(Collectors.joining("\n"));
 	}
-	
-	public static String toBynary(byte[] b) {
-		return ByteUtility.stream(b).mapToObj(ByteUtility::toBynary).collect(Collectors.joining(" "));
+
+	public static String toBinary(byte[] b) {
+		return ByteUtility.stream(b).mapToObj(ByteUtility::toBinary).collect(Collectors.joining(" "));
 	}
-	
-	public static String toBynary(int b) {
+
+	public static String toBinary(int b) {
 		return String.format("0x%08X", b & 0xff);
 	}
 	
