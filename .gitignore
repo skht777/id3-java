@@ -38,3 +38,5 @@ local.properties
 # TeXlipse plugin
 .texlipse
 /build/
+
+data/
